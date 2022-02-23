@@ -1,10 +1,13 @@
 import React from 'react';
+import './style.css';
+import Form from './Form';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Tryunfo</h1>
+        <h1 className="title">Tryunfo</h1>
+        <Form />
       </div>
     );
   }
