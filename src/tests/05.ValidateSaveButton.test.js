@@ -23,7 +23,7 @@ describe("5 - Faça a validação do botão de Salvar no formulário", () => {
     userEvent.type(screen.getByTestId(/attr3-input/i), '56');
     userEvent.selectOptions(screen.getByTestId(/rare-input/i), 'raro');
     expect(saveBtn).not.toBeDisabled();
-    
+
     userEvent.type(screen.getByTestId(/name-input/i), '{selectall}{backspace}');
     expect(saveBtn).toBeDisabled();
   });
