@@ -23,9 +23,7 @@ class Card extends React.Component {
         <div data-testid="attr2-card">{ cardAttr2 }</div>
         <div data-testid="attr3-card">{ cardAttr3 }</div>
         <div data-testid="rare-card">{ cardRare }</div>
-
         {(cardTrunfo === true ? <div data-testid="trunfo-card">Super Trunfo</div> : '')}
-
       </div>
     );
   }
