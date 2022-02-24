@@ -26,8 +26,8 @@ class Form extends React.Component {
             name="cardName"
             type="text"
             data-testid="name-input"
-            value={ cardName }
             onChange={ onInputChange }
+            value={ cardName }
           />
         </label>
 
@@ -37,8 +37,8 @@ class Form extends React.Component {
             name="cardDescription"
             type="text"
             data-testid="description-input"
-            value={ cardDescription }
             onChange={ onInputChange }
+            value={ cardDescription }
           />
         </label>
 
@@ -48,8 +48,8 @@ class Form extends React.Component {
             name="cardAttr1"
             type="number"
             data-testid="attr1-input"
-            value={ cardAttr1 }
             onChange={ onInputChange }
+            value={ cardAttr1 }
           />
         </label>
 
@@ -59,8 +59,8 @@ class Form extends React.Component {
             name="cardAttr2"
             type="number"
             data-testid="attr2-input"
-            value={ cardAttr2 }
             onChange={ onInputChange }
+            value={ cardAttr2 }
           />
         </label>
 
@@ -70,8 +70,8 @@ class Form extends React.Component {
             name="cardAttr3"
             type="number"
             data-testid="attr3-input"
-            value={ cardAttr3 }
             onChange={ onInputChange }
+            value={ cardAttr3 }
           />
         </label>
 
@@ -81,8 +81,8 @@ class Form extends React.Component {
             name="cardImage"
             type="text"
             data-testid="image-input"
-            value={ cardImage }
             onChange={ onInputChange }
+            value={ cardImage }
           />
         </label>
 
@@ -92,8 +92,8 @@ class Form extends React.Component {
             name="cardRare"
             type="text"
             data-testid="rare-input"
-            value={ cardRare }
             onChange={ onInputChange }
+            value={ cardRare }
           >
             <option>normal</option>
             <option>raro</option>
@@ -107,8 +107,8 @@ class Form extends React.Component {
             name="cardTrunfo"
             type="checkbox"
             data-testid="trunfo-input"
-            checked={ cardTrunfo }
             onChange={ onInputChange }
+            checked={ cardTrunfo }
           />
         </label>
 

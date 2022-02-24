@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -18,6 +19,7 @@ class App extends React.Component {
       cardTrunfo: '',
       hasTrunfo: false,
       isSaveButtonDisabled: true,
+      SaveCards: [],
     };
   }
 
@@ -57,23 +59,66 @@ class App extends React.Component {
     });
   }
 
+  saveButton = () => {
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+
+    const obj = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((stateBefor) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      SaveCards: [
+        ...stateBefor.SaveCards, obj,
+      ],
+    }));
+  }
+
   render() {
     const { isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1 className="title">Tryunfo</h1>
         <Form
-          value={ this.state }
+          { ...this.state }
           onInputChange={ this.handleChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.saveButton }
         />
 
-        <Card
-          { ...this.state }
-        />
+        <Card { ...this.state } />
       </div>
     );
   }
 }
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};
 
 export default App;
