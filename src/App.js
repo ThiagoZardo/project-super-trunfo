@@ -32,11 +32,6 @@ class App extends React.Component {
     }, () => this.activateButton());
   }
 
-  // handleHastrunfo = () => {
-  //   const { SaveCards, cardTrunfo } = this.state;
-  //   SaveCards.find((element) => element.cardTrunfo);
-  // }
-
   activateButton = () => {
     const { cardName, cardDescription, cardImage, cardRare } = this.state;
     const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
