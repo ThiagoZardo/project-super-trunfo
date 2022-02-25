@@ -89,6 +89,21 @@ class App extends React.Component {
     }));
   }
 
+  deleteFunction = () => {
+    this.setState({
+      hasTrunfo: false,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      SaveCards: [
+      ],
+    });
+  }
+
   render() {
     const { isSaveButtonDisabled, SaveCards } = this.state;
     return (
@@ -97,9 +112,9 @@ class App extends React.Component {
         <Form
           { ...this.state }
           onInputChange={ this.handleChange }
-          // hasTrunfo={ handleHastrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.saveButton }
+          deletButton={ this.deleteFunction }
         />
 
         <Card { ...this.state } />

@@ -16,6 +16,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      deletButton,
     } = this.props;
 
     return (
@@ -123,6 +124,14 @@ class Form extends React.Component {
         >
           Salvar
         </button>
+
+        <button
+          type="submit"
+          data-testid="delete-button"
+          onClick={ deletButton }
+        >
+          Excluir
+        </button>
       </div>
     );
   }
@@ -141,6 +150,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
+  deletButton: PropTypes.func.isRequired,
 };
 
 export default Form;
