@@ -10,11 +10,8 @@
   font-style: normal;
   font-weight: 600;
   height: 36px;
-  left: 131px;
-  line-height: 29px;
-  margin: 10px 0 50px 20px;
-  top: 122px;
-  width: 355px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 label {
@@ -24,7 +21,7 @@ label {
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
-  margin: 10px 0 20px 20px;
+  margin-left: 20px;
 }
 
 input, textarea, select {
@@ -32,10 +29,9 @@ input, textarea, select {
   background: white;
   display: flex;
   flex-direction: row;
-  height: 37px;
-  margin: 10px 0 20px 20px;
-  padding: 0;
-  width: 355px;
+  height: 30px;
+  margin-left: 20px;
+  width: 300px;
 }
 
 textarea {
@@ -48,7 +44,6 @@ button {
   display: flex;
   flex: none;
   flex-direction: row;
-  flex-grow: 0;
   font-family: Verdana , sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -56,6 +51,26 @@ button {
   justify-content: center;
   line-height: 150%;
   margin: 10px 0 20px 20px;
-  order: 0;
   padding: 8px 32px;
+}
+
+.container-principal {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-container {
+  background-color: blue;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  margin-top: 50px;
+  padding: 10px 2%;
+  width: 300px;
+}
+
+.cartas-salvas-title {
+  margin-top: 20px;
+  text-align: center;
 }

@@ -29,7 +29,7 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    }, () => this.activateButton());
+    }, () => this.activateButton(), () => this.filterName());
   }
 
   activateButton = () => {
@@ -59,7 +59,7 @@ class App extends React.Component {
     });
   }
 
-  saveButton = () => {
+  saveButton = ({ target }) => {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
 
@@ -75,6 +75,9 @@ class App extends React.Component {
     };
 
     this.setState((stateBefor) => ({
+      SaveCards: [
+        ...stateBefor.SaveCards, obj,
+      ],
       hasTrunfo: cardTrunfo,
       cardName: '',
       cardDescription: '',
@@ -83,47 +86,66 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
-      SaveCards: [
-        ...stateBefor.SaveCards, obj,
-      ],
     }));
+    // target.parentNode.firstChild.remove();
   }
 
-  deleteFunction = () => {
+  deleteCard = ({ target }) => {
+    const { SaveCards } = this.state;
+    const newSaveCard = SaveCards.filter((element) => element.cardName !== target.value);
     this.setState({
+      SaveCards: newSaveCard,
       hasTrunfo: false,
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      SaveCards: [
-      ],
+    });
+  }
+
+  filterName = ({ target }) => {
+    this.setState({
+      cardName: target.value,
     });
   }
 
   render() {
-    const { isSaveButtonDisabled, SaveCards } = this.state;
+    const { SaveCards, cardName } = this.state;
     return (
       <div>
-        <h1 className="title">Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.handleChange }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ this.saveButton }
-          deletButton={ this.deleteFunction }
-        />
+        <div className="container-principal">
+          <div className="form-container">
+            <h1 className="title">Tryunfo</h1>
+            <Form
+              { ...this.state }
+              onInputChange={ this.handleChange }
+              filterName={ this.filterName }
+              onSaveButtonClick={ this.saveButton }
+            />
+          </div>
 
-        <Card { ...this.state } />
-        { SaveCards.map((card) => (
-          <Card
-            key={ card.cardName }
-            { ...card }
-          />
-        )) }
+          <div className="card-container">
+            <Card { ...this.state } />
+          </div>
+        </div>
+        <div className="Cartas Salvas">
+          <h2 className="cartas-salvas-title">Cartas Salvas</h2>
+          { SaveCards
+            .filter((card) => card.cardName
+              .includes(cardName))
+            .map((card) => (
+              <>
+                <Card
+                  key={ card.cardName }
+                  { ...card }
+                />
+                <button
+                  type="submit"
+                  data-testid="delete-button"
+                  onClick={ this.deleteCard }
+                  value={ card.cardName }
+                >
+                  Excluir
+                </button>
+              </>
+            )) }
+        </div>
       </div>
     );
   }
