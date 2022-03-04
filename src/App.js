@@ -20,6 +20,8 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       SaveCards: [],
+      filterName: '',
+      filterRare: 'todas',
     };
   }
 
@@ -29,7 +31,7 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    }, () => this.activateButton(), () => this.filterName());
+    }, () => this.activateButton());
   }
 
   activateButton = () => {
@@ -59,7 +61,7 @@ class App extends React.Component {
     });
   }
 
-  saveButton = ({ target }) => {
+  saveButton = () => {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
 
@@ -87,7 +89,6 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
     }));
-    // target.parentNode.firstChild.remove();
   }
 
   deleteCard = ({ target }) => {
@@ -99,14 +100,20 @@ class App extends React.Component {
     });
   }
 
-  filterName = ({ target }) => {
-    this.setState({
-      cardName: target.value,
-    });
+  filters = ({ target }) => {
+    if (target.type === 'text') {
+      this.setState({
+        filterName: target.value,
+      });
+    } else {
+      this.setState({
+        filterRare: target.value,
+      });
+    }
   }
 
   render() {
-    const { SaveCards, cardName } = this.state;
+    const { SaveCards, filterName, filterRare } = this.state;
     return (
       <div>
         <div className="container-principal">
@@ -115,7 +122,7 @@ class App extends React.Component {
             <Form
               { ...this.state }
               onInputChange={ this.handleChange }
-              filterName={ this.filterName }
+              functionFilters={ this.filters }
               onSaveButtonClick={ this.saveButton }
             />
           </div>
@@ -125,10 +132,12 @@ class App extends React.Component {
           </div>
         </div>
         <div className="Cartas Salvas">
-          <h2 className="cartas-salvas-title">Cartas Salvas</h2>
+
           { SaveCards
             .filter((card) => card.cardName
-              .includes(cardName))
+              .includes(filterName))
+            .filter((rare) => (filterRare === 'todas'
+              ? true : rare.cardRare === filterRare))
             .map((card) => (
               <>
                 <Card
