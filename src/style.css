@@ -29,12 +29,14 @@ input, textarea, select {
   background: white;
   display: flex;
   flex-direction: row;
+  font-size: 20px;
   height: 30px;
   margin-left: 20px;
   width: 300px;
 }
 
 textarea {
+  font-size: 20px;
   height: 100px;
 }
 
@@ -72,5 +74,26 @@ button {
 
 .cartas-salvas-title {
   margin-top: 20px;
+  text-align: center;
+}
+
+.cartas-salvas-card {
+  background-color: yellow;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 50px 60px 20px;
+  padding: 0 25px;
+  width: 200px;
+}
+
+.image-card {
+  border-radius: 10px;
+  max-width: 140px;
+}
+
+.name-card, .description-card, .attr-card, .rare-card {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 8px;
   text-align: center;
 }

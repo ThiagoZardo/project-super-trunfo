@@ -131,7 +131,7 @@ class App extends React.Component {
             <Card { ...this.state } />
           </div>
         </div>
-        <div className="Cartas Salvas">
+        <div className="cartas-salvas-card">
 
           { SaveCards
             .filter((card) => card.cardName

@@ -15,14 +15,64 @@ class Card extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <div data-testid="name-card">{ cardName }</div>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <div data-testid="description-card">{ cardDescription }</div>
-        <div data-testid="attr1-card">{ cardAttr1 }</div>
-        <div data-testid="attr2-card">{ cardAttr2 }</div>
-        <div data-testid="attr3-card">{ cardAttr3 }</div>
-        <div data-testid="rare-card">{ cardRare }</div>
+      <div className="cards-salve">
+        <div
+          data-testid="name-card"
+          className="name-card"
+        >
+          { cardName }
+        </div>
+
+        <img
+          data-testid="image-card"
+          className="image-card"
+          src={ cardImage }
+          alt={ cardName }
+        />
+
+        <div
+          data-testid="description-card"
+          className="description-card"
+        >
+          { cardDescription }
+        </div>
+
+        <div
+          data-testid="attr1-card"
+          className="attr-card"
+        >
+          Força:
+          {' '}
+          { cardAttr1 }
+        </div>
+
+        <div
+          data-testid="attr2-card"
+          className="attr-card"
+        >
+          Velocidade:
+          {' '}
+          { cardAttr2 }
+        </div>
+
+        <div
+          data-testid="attr3-card"
+          className="attr-card"
+        >
+          Destreza:
+          {' '}
+          { cardAttr3 }
+        </div>
+
+        <div
+          data-testid="rare-card"
+          className="rare-card"
+        >
+          Raridade:
+          {' '}
+          { cardRare }
+        </div>
+
         {(cardTrunfo === true ? <div data-testid="trunfo-card">Super Trunfo</div> : '')}
       </div>
     );
